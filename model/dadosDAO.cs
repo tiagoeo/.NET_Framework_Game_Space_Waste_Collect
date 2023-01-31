@@ -7,5 +7,6 @@ namespace model
 {
     public class dadosDAO
     {
+        //static String URL = "http://localhost/transmitir.php";
     }
 }

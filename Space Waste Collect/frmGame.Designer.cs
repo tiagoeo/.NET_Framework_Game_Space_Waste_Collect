@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.naveJogador = new System.Windows.Forms.PictureBox();
             this.itemColeta0 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.itemColeta1 = new System.Windows.Forms.PictureBox();
+            this.itemColeta2 = new System.Windows.Forms.PictureBox();
             this.lblJogadorNome = new System.Windows.Forms.Label();
             this.lblJogadorPontos = new System.Windows.Forms.Label();
             this.lblJogadorDificuldade = new System.Windows.Forms.Label();
-            this.btnJogoSair = new System.Windows.Forms.Button();
+            this.timerItemColeta = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.naveJogador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColeta1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColeta2)).BeginInit();
             this.SuspendLayout();
             // 
             // naveJogador
@@ -47,7 +48,7 @@
             this.naveJogador.BackColor = System.Drawing.Color.Transparent;
             this.naveJogador.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.playerShip3_blue;
             this.naveJogador.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.naveJogador.Location = new System.Drawing.Point(250, 462);
+            this.naveJogador.Location = new System.Drawing.Point(250, 460);
             this.naveJogador.Name = "naveJogador";
             this.naveJogador.Size = new System.Drawing.Size(100, 77);
             this.naveJogador.TabIndex = 0;
@@ -64,27 +65,27 @@
             this.itemColeta0.TabIndex = 1;
             this.itemColeta0.TabStop = false;
             // 
-            // pictureBox1
+            // itemColeta1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.ufoBlue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(250, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 90);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.itemColeta1.BackColor = System.Drawing.Color.Transparent;
+            this.itemColeta1.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.ufoBlue;
+            this.itemColeta1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemColeta1.Location = new System.Drawing.Point(250, 23);
+            this.itemColeta1.Name = "itemColeta1";
+            this.itemColeta1.Size = new System.Drawing.Size(90, 90);
+            this.itemColeta1.TabIndex = 2;
+            this.itemColeta1.TabStop = false;
             // 
-            // pictureBox2
+            // itemColeta2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.meteorBrown_med1;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(450, 23);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(90, 90);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.itemColeta2.BackColor = System.Drawing.Color.Transparent;
+            this.itemColeta2.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.meteorBrown_med1;
+            this.itemColeta2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.itemColeta2.Location = new System.Drawing.Point(450, 23);
+            this.itemColeta2.Name = "itemColeta2";
+            this.itemColeta2.Size = new System.Drawing.Size(90, 90);
+            this.itemColeta2.TabIndex = 3;
+            this.itemColeta2.TabStop = false;
             // 
             // lblJogadorNome
             // 
@@ -122,18 +123,10 @@
             this.lblJogadorDificuldade.TabIndex = 6;
             this.lblJogadorDificuldade.Text = "DIFICULDADE: 0";
             // 
-            // btnJogoSair
+            // timerItemColeta
             // 
-            this.btnJogoSair.BackColor = System.Drawing.Color.Red;
-            this.btnJogoSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJogoSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJogoSair.ForeColor = System.Drawing.Color.White;
-            this.btnJogoSair.Location = new System.Drawing.Point(619, 490);
-            this.btnJogoSair.Name = "btnJogoSair";
-            this.btnJogoSair.Size = new System.Drawing.Size(108, 35);
-            this.btnJogoSair.TabIndex = 7;
-            this.btnJogoSair.Text = "SAIR";
-            this.btnJogoSair.UseVisualStyleBackColor = false;
+            this.timerItemColeta.Interval = 1;
+            this.timerItemColeta.Tick += new System.EventHandler(this.timerItemColeta_Tick);
             // 
             // frmGame
             // 
@@ -142,20 +135,21 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.Background1;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.btnJogoSair);
             this.Controls.Add(this.lblJogadorDificuldade);
             this.Controls.Add(this.lblJogadorPontos);
             this.Controls.Add(this.lblJogadorNome);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.itemColeta2);
+            this.Controls.Add(this.itemColeta1);
             this.Controls.Add(this.itemColeta0);
             this.Controls.Add(this.naveJogador);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmGame";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmGame_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmGame_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.naveJogador)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColeta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.itemColeta2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,12 +159,12 @@
 
         private System.Windows.Forms.PictureBox naveJogador;
         private System.Windows.Forms.PictureBox itemColeta0;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox itemColeta1;
+        private System.Windows.Forms.PictureBox itemColeta2;
         private System.Windows.Forms.Label lblJogadorNome;
         private System.Windows.Forms.Label lblJogadorPontos;
+        private System.Windows.Forms.Timer timerItemColeta;
         private System.Windows.Forms.Label lblJogadorDificuldade;
-        private System.Windows.Forms.Button btnJogoSair;
     }
 }
 
