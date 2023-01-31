@@ -15,62 +15,100 @@ namespace Space_Waste_Collect
         
         String nomeGame = "Space Waste Collect";
         int velJogador = 2;
-        int velItemColeta = 2;
-        int pontuacao = 1000;
+        int velItemColeta = 4;
+        int pontuacao = 0;
         int mover = 0;
         Random rnd = new Random();
 
         public frmGame()
         {
             InitializeComponent();
-            game("iniciar");
+            menu("menu_1");
         }
 
         public void game(string comando)
         {
-            if (comando == "iniciar")
+            switch (comando)
             {
+                case "modo_livre":
+                    this.Text = nomeGame;
+                    lblJogadorNome.Text = "LIVRE";
+                    lblJogadorNome.Visible = true;
+                    lblJogadorPontos.Visible = true;
+                    lblJogadorDificuldade.Visible = true;
 
-                this.Text = nomeGame + " - Jogador : "; //+ lblJogadorLogado.Text;
-                lblJogadorNome.Visible = true;
-                lblJogadorPontos.Visible = true;
-                lblJogadorDificuldade.Visible = true;
+                    naveJogador.Visible = true;
+                    naveJogador.Left = 250;
 
-                naveJogador.Visible = true;
-                naveJogador.Left = 250;
+                    itemColeta0.Visible = true;
+                    itemColeta1.Visible = true;
+                    itemColeta2.Visible = true;
 
-                itemColeta0.Visible = true;
-                itemColeta1.Visible = true;
-                itemColeta2.Visible = true;
+                    itemColeta0.Left = 50;
+                    posItemColeta("itemColeta0");
 
-                itemColeta0.Left = 50;
-                posItemColeta("itemColeta0");
+                    itemColeta1.Left = 250;
+                    posItemColeta("itemColeta1");
 
-                itemColeta1.Left = 250;
-                posItemColeta("itemColeta1");
+                    itemColeta2.Left = 450;
+                    posItemColeta("itemColeta2");
 
-                itemColeta2.Left = 450;
-                posItemColeta("itemColeta2");
+                    dificuldade();
 
-                dificuldade();
+                    timerItemColeta.Enabled = true;
 
-                timerItemColeta.Enabled = true;
+                    menu("menu_sair");
+
+                    lblInfo.Text = "Botão \"A\" move a nave para a esquerda; Botão \"B\" move a nave para direita; \"ESC\" sai do jogo.";
+
+                    this.WindowState = FormWindowState.Minimized;
+                    this.WindowState = FormWindowState.Normal;
+                    break;
+                case "sair":
+                    this.Text = nomeGame;
+
+                    lblJogadorNome.Visible = false;
+                    lblJogadorPontos.Visible = false;
+                    lblJogadorDificuldade.Visible = false;
+
+                    timerItemColeta.Enabled = false;
+
+                    naveJogador.Visible = false;
+
+                    itemColeta0.Visible = false;
+                    itemColeta1.Visible = false;
+                    itemColeta2.Visible = false;
+
+                    menu("menu_1");
+                    break;
             }
-            else if (comando == "sair")
+        }
+
+        private void menu(string modo)
+        {
+            switch (modo)
             {
-                this.Text = nomeGame;
+                case "menu_1":
+                    gbMenu.Visible = true;
+                    gbMenu.Location = new Point(0,0);
 
-                lblJogadorNome.Visible = false;
-                lblJogadorPontos.Visible = false;
-                lblJogadorDificuldade.Visible = false;
+                    gbsModo.Visible = true;
+                    gbsModo.Location = new Point(150, 80);
+                    lblInfo.Text = "";
+                    break;
 
-                timerItemColeta.Enabled = false;
+                case "menu_2":
 
-                naveJogador.Visible = false;
+                    break;
 
-                itemColeta0.Visible = false;
-                itemColeta1.Visible = false;
-                itemColeta2.Visible = false;
+                case "menu_3":
+
+                    break;
+
+                case "menu_sair":
+                    gbMenu.Visible = false;
+                    break;
+
             }
         }
 
@@ -183,28 +221,34 @@ namespace Space_Waste_Collect
 
         private void dificuldade()
         {
+            int dif = 0;
             if (pontuacao <= 100)
             {
-                velItemColeta = 1;
+                velItemColeta *= 1;
+                dif = 0;
             }
 
             else if (pontuacao > 100 && pontuacao <= 1000)
             {
-                velItemColeta = 2;
+                velItemColeta *= 2;
+                dif = 1;
             }
             else if (pontuacao > 1000 && pontuacao <= 5000)
             {
-                velItemColeta = 3;
+                velItemColeta *= 3;
+                dif = 2;
             }
             else if (pontuacao > 5000 && pontuacao <= 10000)
             {
-                velItemColeta = 4;
+                velItemColeta *= 4;
+                dif = 3;
             }
             else if (pontuacao > 10000)
             {
-                velItemColeta = 5;
+                velItemColeta *= 5;
+                dif = 4;
             }
-            lblJogadorDificuldade.Text = "DIFICULDADE: " + velItemColeta.ToString();
+            lblJogadorDificuldade.Text = "DIFICULDADE: " + dif.ToString();
         }
 
         private void frmGame_KeyDown(object sender, KeyEventArgs e)
@@ -294,6 +338,11 @@ namespace Space_Waste_Collect
                     posItemColeta("itemColeta2");
                 }
             }
+        }
+
+        private void btnModoLivre_Click_1(object sender, EventArgs e)
+        {
+            game("modo_livre");
         }
     }
 }
