@@ -38,18 +38,39 @@
             this.lblJogadorDificuldade = new System.Windows.Forms.Label();
             this.timerItemColeta = new System.Windows.Forms.Timer(this.components);
             this.gbMenu = new System.Windows.Forms.GroupBox();
+            this.gbsVinculo = new System.Windows.Forms.GroupBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnSair2 = new System.Windows.Forms.Button();
+            this.btnVinculo = new System.Windows.Forms.Button();
+            this.gbsLogin = new System.Windows.Forms.GroupBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.lblLoginSenha = new System.Windows.Forms.Label();
+            this.lblLoginNome = new System.Windows.Forms.Label();
+            this.btnSair1 = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gbsModo = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnModoLivre = new System.Windows.Forms.Button();
             this.btnModoRanqueado = new System.Windows.Forms.Button();
+            this.btnModoLivre = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.naveJogador)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta2)).BeginInit();
             this.gbMenu.SuspendLayout();
+            this.gbsVinculo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.gbsLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gbsModo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // naveJogador
@@ -139,35 +160,177 @@
             // 
             // gbMenu
             // 
+            this.gbMenu.Controls.Add(this.gbsVinculo);
+            this.gbMenu.Controls.Add(this.gbsLogin);
             this.gbMenu.Controls.Add(this.gbsModo);
+            this.gbMenu.Controls.Add(this.panel1);
             this.gbMenu.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gbMenu.Location = new System.Drawing.Point(0, 0);
+            this.gbMenu.Location = new System.Drawing.Point(10, 12);
             this.gbMenu.Name = "gbMenu";
             this.gbMenu.Size = new System.Drawing.Size(783, 543);
             this.gbMenu.TabIndex = 7;
             this.gbMenu.TabStop = false;
-            this.gbMenu.Text = "Menu";
+            // 
+            // gbsVinculo
+            // 
+            this.gbsVinculo.Controls.Add(this.pictureBox4);
+            this.gbsVinculo.Controls.Add(this.pictureBox3);
+            this.gbsVinculo.Controls.Add(this.btnSair2);
+            this.gbsVinculo.Controls.Add(this.btnVinculo);
+            this.gbsVinculo.Location = new System.Drawing.Point(561, 19);
+            this.gbsVinculo.Name = "gbsVinculo";
+            this.gbsVinculo.Size = new System.Drawing.Size(500, 400);
+            this.gbsVinculo.TabIndex = 7;
+            this.gbsVinculo.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.playerShip3_orange;
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(252, 189);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(151, 105);
+            this.pictureBox4.TabIndex = 3;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.ufoRed;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(69, 71);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(213, 147);
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btnSair2
+            // 
+            this.btnSair2.ForeColor = System.Drawing.Color.Black;
+            this.btnSair2.Location = new System.Drawing.Point(280, 334);
+            this.btnSair2.Name = "btnSair2";
+            this.btnSair2.Size = new System.Drawing.Size(150, 50);
+            this.btnSair2.TabIndex = 1;
+            this.btnSair2.Text = "Sair";
+            this.btnSair2.UseVisualStyleBackColor = true;
+            this.btnSair2.Click += new System.EventHandler(this.btnSair2_Click);
+            // 
+            // btnVinculo
+            // 
+            this.btnVinculo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnVinculo.Location = new System.Drawing.Point(69, 334);
+            this.btnVinculo.Name = "btnVinculo";
+            this.btnVinculo.Size = new System.Drawing.Size(150, 50);
+            this.btnVinculo.TabIndex = 0;
+            this.btnVinculo.Text = "Vincular Game";
+            this.btnVinculo.UseVisualStyleBackColor = true;
+            this.btnVinculo.Click += new System.EventHandler(this.btnVinculo_Click);
+            // 
+            // gbsLogin
+            // 
+            this.gbsLogin.BackColor = System.Drawing.Color.Transparent;
+            this.gbsLogin.Controls.Add(this.txtSenha);
+            this.gbsLogin.Controls.Add(this.txtNome);
+            this.gbsLogin.Controls.Add(this.lblLoginSenha);
+            this.gbsLogin.Controls.Add(this.lblLoginNome);
+            this.gbsLogin.Controls.Add(this.btnSair1);
+            this.gbsLogin.Controls.Add(this.btnLogin);
+            this.gbsLogin.Controls.Add(this.pictureBox2);
+            this.gbsLogin.Location = new System.Drawing.Point(152, 46);
+            this.gbsLogin.Name = "gbsLogin";
+            this.gbsLogin.Size = new System.Drawing.Size(500, 400);
+            this.gbsLogin.TabIndex = 6;
+            this.gbsLogin.TabStop = false;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Location = new System.Drawing.Point(164, 221);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
+            this.txtSenha.Size = new System.Drawing.Size(165, 20);
+            this.txtSenha.TabIndex = 5;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(164, 152);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(165, 20);
+            this.txtNome.TabIndex = 4;
+            // 
+            // lblLoginSenha
+            // 
+            this.lblLoginSenha.AutoSize = true;
+            this.lblLoginSenha.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoginSenha.ForeColor = System.Drawing.Color.White;
+            this.lblLoginSenha.Location = new System.Drawing.Point(164, 205);
+            this.lblLoginSenha.Name = "lblLoginSenha";
+            this.lblLoginSenha.Size = new System.Drawing.Size(38, 13);
+            this.lblLoginSenha.TabIndex = 3;
+            this.lblLoginSenha.Text = "Senha";
+            // 
+            // lblLoginNome
+            // 
+            this.lblLoginNome.AutoSize = true;
+            this.lblLoginNome.BackColor = System.Drawing.Color.Transparent;
+            this.lblLoginNome.ForeColor = System.Drawing.Color.White;
+            this.lblLoginNome.Location = new System.Drawing.Point(164, 136);
+            this.lblLoginNome.Name = "lblLoginNome";
+            this.lblLoginNome.Size = new System.Drawing.Size(35, 13);
+            this.lblLoginNome.TabIndex = 2;
+            this.lblLoginNome.Text = "Nome";
+            // 
+            // btnSair1
+            // 
+            this.btnSair1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSair1.Location = new System.Drawing.Point(282, 335);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(150, 50);
+            this.btnSair1.TabIndex = 1;
+            this.btnSair1.Text = "Sair";
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnLogin.Location = new System.Drawing.Point(69, 335);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(150, 50);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.meteorBrown_big2;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(117, 80);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(270, 249);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // gbsModo
             // 
             this.gbsModo.Controls.Add(this.btnModoRanqueado);
             this.gbsModo.Controls.Add(this.btnModoLivre);
             this.gbsModo.Controls.Add(this.pictureBox1);
-            this.gbsModo.Location = new System.Drawing.Point(127, 73);
+            this.gbsModo.Location = new System.Drawing.Point(150, 80);
             this.gbsModo.Name = "gbsModo";
             this.gbsModo.Size = new System.Drawing.Size(500, 400);
             this.gbsModo.TabIndex = 5;
             this.gbsModo.TabStop = false;
             // 
-            // pictureBox1
+            // btnModoRanqueado
             // 
-            this.pictureBox1.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.playerShip3_blue;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(138, 82);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(226, 199);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.btnModoRanqueado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnModoRanqueado.Location = new System.Drawing.Point(282, 335);
+            this.btnModoRanqueado.Name = "btnModoRanqueado";
+            this.btnModoRanqueado.Size = new System.Drawing.Size(150, 50);
+            this.btnModoRanqueado.TabIndex = 8;
+            this.btnModoRanqueado.Text = "Modo Ranqueado";
+            this.btnModoRanqueado.UseVisualStyleBackColor = true;
+            this.btnModoRanqueado.Click += new System.EventHandler(this.btnModoRanqueado_Click);
             // 
             // btnModoLivre
             // 
@@ -183,28 +346,44 @@
             this.btnModoLivre.UseVisualStyleBackColor = false;
             this.btnModoLivre.Click += new System.EventHandler(this.btnModoLivre_Click_1);
             // 
-            // btnModoRanqueado
+            // pictureBox1
             // 
-            this.btnModoRanqueado.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnModoRanqueado.Location = new System.Drawing.Point(282, 335);
-            this.btnModoRanqueado.Name = "btnModoRanqueado";
-            this.btnModoRanqueado.Size = new System.Drawing.Size(150, 50);
-            this.btnModoRanqueado.TabIndex = 8;
-            this.btnModoRanqueado.Text = "Modo Ranqueado";
-            this.btnModoRanqueado.UseVisualStyleBackColor = true;
+            this.pictureBox1.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.playerShip3_blue;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(138, 82);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(226, 199);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Location = new System.Drawing.Point(98, 89);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(546, 400);
+            this.panel1.TabIndex = 6;
             // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblInfo.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.lblInfo.Location = new System.Drawing.Point(148, 546);
+            this.lblInfo.Location = new System.Drawing.Point(150, 5);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(468, 13);
             this.lblInfo.TabIndex = 8;
             this.lblInfo.Text = "Botão \"A\" move a nave para a esquerda; Botão \"B\" move a nave para direita; \"ESC\" " +
     "sai do jogo.";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lblInfo);
+            this.panel2.Location = new System.Drawing.Point(-4, 536);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 30);
+            this.panel2.TabIndex = 9;
             // 
             // frmGame
             // 
@@ -213,7 +392,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::Space_Waste_Collect.Properties.Resources.Background1;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.lblInfo);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.gbMenu);
             this.Controls.Add(this.lblJogadorDificuldade);
             this.Controls.Add(this.lblJogadorPontos);
@@ -231,8 +410,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemColeta2)).EndInit();
             this.gbMenu.ResumeLayout(false);
+            this.gbsVinculo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.gbsLogin.ResumeLayout(false);
+            this.gbsLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gbsModo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,6 +441,21 @@
         private System.Windows.Forms.Button btnModoLivre;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.GroupBox gbsLogin;
+        private System.Windows.Forms.Label lblLoginSenha;
+        private System.Windows.Forms.Label lblLoginNome;
+        private System.Windows.Forms.Button btnSair1;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.GroupBox gbsVinculo;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btnSair2;
+        private System.Windows.Forms.Button btnVinculo;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 
