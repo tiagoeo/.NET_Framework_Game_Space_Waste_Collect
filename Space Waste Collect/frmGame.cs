@@ -18,7 +18,7 @@ namespace Space_Waste_Collect
     {
 
         string nomeGame = "Space Waste Collect", nomeJogador, senhaJogador, emailJogador, statusJogador, extrasJogador;
-        int velJogador = 10, velItemColeta = 4, pontosJogador = 0, bonus = 1, mover = 0, uidJogador;
+        int velJogador = 10, velItemColeta = 4, pontosJogador = 0, auxPontosJogador = 0, bonus = 1, mover = 0, uidJogador;
         bool gameRanqueado = false;
         Random rnd = new Random();
         ConexaoVO novoAsync = new ConexaoVO();
@@ -106,12 +106,18 @@ namespace Space_Waste_Collect
                     this.WindowState = FormWindowState.Normal;
                     break;
                 case "sair":
+                    if (gameRanqueado)
+                    {
+                        atualizar();
+                    }
+
                     this.Text = nomeGame;
                     nomeJogador = "";
                     emailJogador = "";
                     statusJogador = "";
                     extrasJogador = "";
                     pontosJogador = 0;
+                    auxPontosJogador = 0;
                     bonus = 0;
                     uidJogador = 0;
 
@@ -250,7 +256,6 @@ namespace Space_Waste_Collect
         {
             if (naveJogador.Bounds.IntersectsWith(itemColeta0.Bounds))
             {
-                //salvarItemColetado();
                 if (itemColeta0.AccessibleName == "item3")
                 {
                     pontuacao(-1);
@@ -264,7 +269,6 @@ namespace Space_Waste_Collect
             }
             else if (naveJogador.Bounds.IntersectsWith(itemColeta1.Bounds))
             {
-                //salvarItemColetado();
                 posItemColeta("itemColeta1");
                 if (itemColeta1.AccessibleName == "item3")
                 {
@@ -277,7 +281,6 @@ namespace Space_Waste_Collect
             }
             else if (naveJogador.Bounds.IntersectsWith(itemColeta2.Bounds))
             {
-                //salvarItemColetado();
                 posItemColeta("itemColeta2");
                 if (itemColeta2.AccessibleName == "item3")
                 {
@@ -293,6 +296,7 @@ namespace Space_Waste_Collect
 
         private void pontuacao(int valor)
         {
+            auxPontosJogador += 1 * bonus;
             if (valor > 0)
             {
                 pontosJogador += valor * bonus;
@@ -302,9 +306,10 @@ namespace Space_Waste_Collect
                 pontosJogador += valor;
             }
 
-            if (gameRanqueado)
+            if (gameRanqueado && auxPontosJogador > 15)
             {
-
+                atualizar();
+                auxPontosJogador = 0;
             }
 
             dificuldade();
@@ -343,18 +348,17 @@ namespace Space_Waste_Collect
             lblJogadorDificuldade.Text = "DIFICULDADE: " + dif.ToString();
         }
 
-
         private async void login(){
             nomeJogador = txtNome.Text;
             senhaJogador = txtSenha.Text;
 
-            if (nomeJogador.Count() <= 3)
+            if (nomeJogador.Count() < 3)
             {
                 lblInfo.Text = "Campo 'nome' não pode ser inferior a 3 (três) caracteres";
                 return;
             }
 
-            if (senhaJogador.Count() <= 4)
+            if (senhaJogador.Count() < 4)
             {
                 lblInfo.Text = "Campo 'senha' não pode ser inferior a 4 (quatro) caracteres";
                 return;
@@ -456,10 +460,6 @@ namespace Space_Waste_Collect
                         {
 
                             this.Text = valueJSON2.GameNome;
-
-                            nomeJogador = valueJSON2.nome;
-                            emailJogador = valueJSON2.email;
-                            statusJogador = valueJSON2.status;
                             extrasJogador = valueJSON2.GameExtras;
                             pontosJogador = Int32.Parse(valueJSON2.GamePontos);
                             bonus = Int32.Parse(valueJSON2.GameBonus);
@@ -505,6 +505,45 @@ namespace Space_Waste_Collect
             }
             btnVinculo.Enabled = true;
             btnSair2.Enabled = true;
+        }
+
+        private async void atualizar(){
+            var data = new Dictionary<string, string>
+            {
+                {"uidusuarioatualizar", uidJogador.ToString()},
+                {"pontosatualizar", pontosJogador.ToString()},
+                {"extrasatualizar", extrasJogador}
+            };
+
+            lblInfo.Text = "Acessando servidor...";
+
+            var valueJSON = await novoAsync.AtualizarPontos(data);
+
+            if (valueJSON != null)
+            {
+                if (valueJSON.Atualizacao == "true")
+                {
+                    lblInfo.Text = "Botão \"A\" move a nave para a esquerda; Botão \"B\" move a nave para direita; \"ESC\" sai do jogo.";
+                    
+                }
+                else
+                {
+                    lblInfo.Text = "Erro no servidor, valor não será pontuado no ranque do site";
+                }
+            }
+            else
+            {
+                if (valueJSON == null)
+                {
+                    lblInfo.Text = "Erro no servidor, valor não será pontuado no ranque do site";
+                }
+                else if (valueJSON.Excecoes != null)
+                {
+                    lblInfo.Text = "Erro no servidor: " + valueJSON.Excecoes;
+                }
+
+            }
+
         }
 
         private void frmGame_KeyDown(object sender, KeyEventArgs e)

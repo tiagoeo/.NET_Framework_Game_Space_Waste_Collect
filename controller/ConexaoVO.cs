@@ -70,5 +70,25 @@ namespace Controller
                 return excep;
             }
         }
+        public async Task<SituacaoAsync> AtualizarPontos(Dictionary<string, string> data)
+        {
+            try
+            {
+                data.Add("uidgameatualizar", Game.IdGame);
+
+                var jsonString = await novoAsync.ConnAsync(data);
+
+                var valueJSON = JsonConvert.DeserializeObject<SituacaoAsync>(jsonString.ToString());
+
+                return valueJSON;
+            }
+            catch (Exception ex)
+            {
+                SituacaoAsync excep = new SituacaoAsync();
+                excep.Excecoes = ex.ToString();
+
+                return excep;
+            }
+        }
     }
 }
