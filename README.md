@@ -1,7 +1,7 @@
 <hr><h2 align="left">APRESENTAÇÃO</h2>
 
 <h3 align="left">
-  O Projeto inicial elaborado para aumentar a curiosidade e a atenção dos alunos nas aulas de linguagem de programação, possui diversas versões e modificações; Desenvolvido na IDE Visual Studio Community para a plataforma .NET Framework 4.5 com os pacotes Newtonsoft.Json e Microsoft.AspNet.WebApi.Client, em linguagem C# com POO e arquitetura MVC.
+  O Projeto inicial foi elaborado com intuito de despertar a curiosidade e a atenção dos alunos nas aulas de linguagem de programação, possui diversas versões e modificações; Desenvolvido na IDE Visual Studio Community para a plataforma .NET Framework 4.5 com os pacotes Newtonsoft.Json e Microsoft.AspNet.WebApi.Client, em linguagem C# com POO e arquitetura MVC.
 </h3>
 
 <p align="center">
